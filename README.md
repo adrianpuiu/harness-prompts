@@ -1,6 +1,8 @@
 Harness loop : 
 
-Round k of N:
+
+
+ Round k of N:
   1. git snapshot round_ref = HEAD           (per-round, enables round-scoped diff)
   2. build CoderState
        instruction + current_files
