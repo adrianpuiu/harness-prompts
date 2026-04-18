@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meta-harness-cc"
+version = "0.1.0"
+description = "Bounded coder ⇄ reviewer coding harness with a pluggable gate."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "George Puiu"}]
+keywords = ["agent", "harness", "anthropic", "claude", "review"]
+dependencies = [
+  "anthropic>=0.40.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "ruff>=0.5",
+  "mypy>=1.8",
+]
+
+[project.scripts]
+meta-harness = "harness.cli:main"
+
+[tool.setuptools]
+packages = ["harness", "harness.prompts"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"harness.prompts" = ["*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
